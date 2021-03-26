@@ -1,12 +1,13 @@
-
 #include <Servo.h>
 #include "FindNoLight.h"
 
 Servo myServo;
+
+// Sensor pins
 const int sensorLed1 = A0;
 const int sensorLed2 = A1;
 const int sensorLed3 = A2;
-
+// Sensor values
 int sensorValue[3];
 
 Neural_Network *Network = new Neural_Network();
@@ -16,24 +17,25 @@ void setup() {
   myServo.attach(3);
   Serial.begin(9600);
 
+  // Data values (target)
   int leds3[3] = {1000, 1000, 50};
   int leds2[3] = {1000, 50, 1000};
   int leds1[3] = {50, 1000, 1000};
   
-    
   double cost_output; 
   
+  // Training
   for(int i = 0; i < 17000; i++){
     int random_point = random(0, 3);
     switch(random_point){
         case 0:
-            cost_output = Network->back_propagation(leds1, 115);
+            cost_output = Network->back_propagation(leds1, 115 /*angle*/);
             break;
         case 1:
-            cost_output = Network->back_propagation(leds2, 90);
+            cost_output = Network->back_propagation(leds2, 90 /*angle*/);
             break;
         case 2: 
-            cost_output = Network->back_propagation(leds3, 65);
+            cost_output = Network->back_propagation(leds3, 65 /*angle*/);
             break;
       }
       Serial.println(cost_output);
