@@ -85,6 +85,7 @@ __W(i+1)__ is the new row vector, __W(i)__ is the old row vector and __ν__ is t
 ***
 
 For more information, check out this [webpage](https://en.wikipedia.org/wiki/Artificial_neural_network)!
+*Translation checked by [weluvgoatz](https://github.com/weluvgoatz)*
 
 
 
